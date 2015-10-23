@@ -78,6 +78,7 @@ def generate_matching_df(template,color_lookup,threshold=0.9):
     data = []
 
     count=0
+    new_image = pandas.DataFrame(columns=["x","y","corr","png"])
     for x in range(width):
         for y in range(height):
             # And take only every 5th pixel
