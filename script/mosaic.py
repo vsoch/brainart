@@ -3,7 +3,7 @@
 import numpy as np
 from numpy.random import choice
 from PIL import Image
-
+import pandas
 
 def get_avg_rgb(png_image):
     """
