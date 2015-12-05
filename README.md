@@ -60,7 +60,25 @@ as in the case that the result set is empty (meaning the lookup does not have a 
 
 
 ### Gallery
-Coming soon :)
+The [gallery](http://vsoch.github.io/brainart) is the index file hosted on the github pages for this repo. To submit a file to it, you can clone this repo:
+
+      git clone https://www.github.com/vsoch/brainart
+
+Check out the gh-pages branch
+
+      git checkout -b gh-pages
+      git pull origin gh-pages
+
+Add your file to the folder called "gallery" and then regenerate the static index.html like so. You will need to install my visci package to quickly generate the template:
+
+
+      cd scripts  #!important
+      pip install visci
+      python generate_gallery.py
+
+
+This will update the `index.html` in the main folder, which renders on github pages. Now just submit the PR, and you're done! You can also email directly to me, if you are not comfortable with github. Submissions are greatly appreciated, and fun :)
+
 
 ### Under Development
 Currently, works best for colorful images (unfortunately this does not include faces) as the color maps are pulled directly from matplotlib. And we know what can be found there! We need to add color maps for skin tones, etc, and faces will be better rendered.
