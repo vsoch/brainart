@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from nilearn.plotting import plot_stat_map
+from brainart.utils import get_packagedir
 from numpy.random import choice
 import matplotlib.pyplot as plt
 from pyneurovault import api
@@ -11,9 +12,15 @@ import numpy as np
 import nibabel
 import os
 
+base = get_packagedir()
 
-def get_lookup():
-
+def get_lookup(lookup_name):
+    lookups = glob("%s/data/*.pkl" %base)
+    lookup_names = [os.path.basename(x).split(".")[0].split("_")[0] for x in lookups]
+    if lookup_name not in lookup_names:
+        print "Invalid lookup name, choices are %s." %(",".join(lookup_names))
+    else:
+        return pandas.read_pickle("%s/data/%s_lookup.pkl" %(base,lookup_name))
 
 def save_lookup(png_images,output_pkl):
     '''save_lookup
@@ -23,13 +30,6 @@ def save_lookup(png_images,output_pkl):
     '''
     lookup_table = get_color_lookup(png_images)
     lookup_table.to_pickle(output_pkl)
-
-
-
-# Get color lookups for white and black images
-print "Generating color lookup table"
-lookup_table = get_color_lookup(png_images)
-
 
 
 def get_data(download_folder):
