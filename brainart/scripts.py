@@ -22,10 +22,11 @@ def main():
     description="make images out of brain imaging data")
     parser.add_argument("--input", dest='image', help="full path to jpg image", type=str, default=None,required=True)
     parser.add_argument("--db", dest='db', help="path to folder for png images for database", type=str, default=None)
+    parser.add_argument("--sample", dest='sample', help="sample every SAMPLEth pixel", type=int, default=10)
     parser.add_argument("--threshold", dest='threshold', help="threshold value to match pixels to brain images", type=float, default=0.9)
     parser.add_argument('--update', dest='update', help="regenerate png database", default=False, action='store_true')
     parser.add_argument("--background-color", dest='bgcolor', help="background color", type=str, default="black")
-    parser.add_argument("--color-lookup", dest='lookup', help="color lookup (white, black, greyblack, greywhite)", type=str, default="white")
+    parser.add_argument("--color-lookup", dest='lookup', help="color lookup (white, black) which currently determined background color.", type=str, default="white")
     parser.add_argument("--output-folder", dest='output', help="output folder for html file", type=str, default=None)
 
     try:
@@ -45,7 +46,7 @@ def main():
             print "Please specify input jpg image with --input argument."
 
         # Check background color
-        if args.lookup not in ["black","white","greyblack","greywhite"]:
+        if args.lookup not in ["black","white"]:
             print "Unrecognized lookup table! Setting to white."
             args.lookup = "white"
             
@@ -53,4 +54,5 @@ def main():
                  output_folder=args.output,
                  color_lookup=args.lookup,
                  bgcolor=args.bgcolor,
-                 threshold=args.threshold)
+                 threshold=args.threshold,
+                 sample=args.sample)

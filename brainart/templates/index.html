@@ -13,19 +13,15 @@
 
 <script type="text/javascript">
 
-    // Set height and width
-    h = 1600;
-    w = 1600;
-
     // Create canvas
     svg = d3.select("#plot")
       .append("svg")
-      .attr("height",h)
-      .attr("width",w)
+      .attr("height","100%")
+      .attr("width","100%")
            
     inputjson = {{DATA}}
 
-    // Set the background colo
+    // Set the background color
     $("#body").css("background-color",inputjson.bgcolor);
 
     var data = inputjson.image
@@ -34,12 +30,21 @@
     svg.selectAll("#body")
         .data(data)
         .enter()
+        .append("svg:a")
+            .attr("xlink:href",function(d){
+                 var image = d.png
+                 image = image.split("/")
+                 image = image[image.length-1]
+                 image = image.split("_")[0]
+                 return "http://www.neurovault.org/images/" + image
+             })
+             .attr("target","_blank")
         .append("svg:image")
             .attr("xlink:href", function(d){return d.png;})
-            .attr("y",function(d){ return 3*d.y })
-            .attr("x",function(d){ return 3*d.x })
+            .attr("y",function(d){ return 1.5*d.y })
+            .attr("x",function(d){ return 1.5*d.x })
             .attr("width", 16)
-            .attr("height", 16);
+            .attr("height", 16)
 
 </script>
 </body></html>

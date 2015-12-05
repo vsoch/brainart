@@ -72,7 +72,7 @@ def get_color_lookup(png_images,remove_path=True):
     return color_lookup
 
 
-def generate_matching_df(template,color_lookup,threshold=0.9,sample=5):
+def generate_matching_df(template,color_lookup,threshold=0.9,sample=10):
     """
      generate_matching_df (worst function name ever)
         this will generate a dataframe with x,y, corr, and png file path

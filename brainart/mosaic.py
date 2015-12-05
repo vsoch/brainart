@@ -13,7 +13,7 @@ import os
 
 base = get_packagedir() 
 
-def generate(template,output_folder=None,color_lookup="white",image_base_path=None,bgcolor="black",threshold=0.9):
+def generate(template,output_folder=None,color_lookup="white",image_base_path=None,bgcolor="black",threshold=0.9,sample=5):
     '''generate
     create a brainart image using a particular color lookup table
     :param template: the template image to generate brainart for! Only jpg has been tested.
@@ -22,9 +22,10 @@ def generate(template,output_folder=None,color_lookup="white",image_base_path=No
     :param image_base_path: Only specify if you provide a custom color lookup pandas. Default is None, as the base path is the github repo images. 
     :param bgcolor: background color (string or hex) for the output html page. Default is black, and will be matched to color lookup if one is provided.
     :param threshold: The threshold to use when assessing similarity of a pixel to a mean brain image color. Default is 0.9
+    :param sample: how many pixels to sample from. Default is every 5th pixel (5). Larger numbers mean generating images faster.
     '''
     if output_folder == None:
-        output_folder = tempfile.mkdtmp()
+        output_folder = tempfile.mkdtemp()
 
     if isinstance(color_lookup,pandas.DataFrame):
         print "Custom color lookup found!"
@@ -42,7 +43,7 @@ def generate(template,output_folder=None,color_lookup="white",image_base_path=No
         image_base_path = "https://rawgithub.com/vsoch/brainart/master/png"
 
     print "Generating image... this can take a few minutes."
-    new_image = generate_matching_df(template,color_lookup,threshold=threshold)
+    new_image = generate_matching_df(template,color_lookup,threshold=threshold,sample=sample)
 
     # Make paths relative to image_base_path
     new_image.png = ["%s/%s" %(image_base_path,x) for x in new_image.png]

@@ -21,7 +21,7 @@ get_data(download_folder)
 
 # For each, we will save a color lookup table to package
 output_folder = "/home/vanessa/Documents/Dropbox/Code/Python/mosaic"
-for bgcolor in ["black","white","greyblack","greywhite"]:
+for bgcolor in ["black","white"]:
     png_images = glob("%s/png/*_%s.png" %(download_folder,bgcolor))
     output_file = "%s/brainart/data/%s_lookup.pkl" %(output_folder,bgcolor)
     save_lookup(png_images,output_file)
