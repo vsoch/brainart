@@ -1,0 +1,2 @@
+recursive-includes brainart/data/*.pkl
+recursive-includes brainart/templates/*.html
