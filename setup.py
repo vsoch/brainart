@@ -17,6 +17,9 @@ setup(
     packages=find_packages(),
 
     # Data files
+    package_data = {'brainart.templates':['*.html'],
+                    'brainart.data':['*.pkl']},
+
     include_package_data=True,
     zip_safe=False,
 

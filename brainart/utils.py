@@ -4,10 +4,11 @@ import numpy as np
 from numpy.random import choice
 from PIL import Image
 import pandas
+import os
 import brainart.hello as hello
 
 def get_packagedir():
-    return os.path.basename(hello.__file__)
+    return os.path.dirname(hello.__file__)
 
 def get_avg_rgb(png_image):
     """
@@ -71,7 +72,7 @@ def get_color_lookup(png_images,remove_path=True):
     return color_lookup
 
 
-def generate_matching_df(template,color_lookup,threshold=0.9):
+def generate_matching_df(template,color_lookup,threshold=0.9,sample=5):
     """
      generate_matching_df (worst function name ever)
         this will generate a dataframe with x,y, corr, and png file path
@@ -87,8 +88,8 @@ def generate_matching_df(template,color_lookup,threshold=0.9):
     new_image = pandas.DataFrame(columns=["x","y","corr","png"])
     for x in range(width):
         for y in range(height):
-            # And take only every 5th pixel
-            if np.remainder(x,5)==0 and np.remainder(y,5)==0:
+            # And take only every [sample]th pixel
+            if np.remainder(x,sample)==0 and np.remainder(y,sample)==0:
                 cpixel = pixels[x, y]
                 try:
                     # Make a temporary data frame with cpixel appended
