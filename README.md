@@ -9,4 +9,4 @@ Demo is for a reduced version of this image using a small set of brainmaps from 
 
 ![image](http://scopeblog.stanford.edu/wp-content/uploads/2015/10/LectinFISH560.jpg)
 
-Not yet streamlined or converted to some kind of app, but the functions will work! :) See [script](script) folder for the pipeline.
+Not yet streamlined or converted to some kind of app, but the functions will work! :)
