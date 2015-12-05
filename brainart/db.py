@@ -64,12 +64,4 @@ def get_data(download_folder):
         plot_stat_map(mr,display_mode="z",colorbar=False,annotate=False,draw_cross=False,cmap=color,cut_coords=1,black_bg=True)
         plt.savefig("%s/%s_black.png" %(output_folder,image_id),facecolor="k", edgecolor="k")
         plt.close()
-        # Also generate for lots of grays
-        image_id = os.path.basename(brainmap).replace(".nii.gz","")
-        mr = nibabel.load(brainmap)
-        plot_stat_map(mr,display_mode="z",colorbar=False,annotate=False,draw_cross=False,cmap="Greys",cut_coords=1)
-        plt.savefig("%s/%s_greywhite.png" %(output_folder,image_id))
-        plt.close()
-        plot_stat_map(mr,display_mode="z",colorbar=False,annotate=False,draw_cross=False,cmap="Greys",cut_coords=1,black_bg=True)
-        plt.savefig("%s/%s_greyblack.png" %(output_folder,image_id),facecolor="k", edgecolor="k")
-        plt.close()
+
