@@ -23,7 +23,7 @@ def main():
     parser.add_argument("--input", dest='image', help="full path to jpg image", type=str, default=None,required=True)
     parser.add_argument("--db", dest='db', help="path to folder for png images for database", type=str, default=None)
     parser.add_argument("--sample", dest='sample', help="sample every SAMPLEth pixel", type=int, default=10)
-    parser.add_argument("--threshold", dest='threshold', help="threshold value to match pixels to brain images", type=float, default=0.9)
+    parser.add_argument("--N", dest='N', help="Number of top N brains to sample from when seleting image. Larger N means more variation in brains and color.", type=float, default=20)
     parser.add_argument('--update', dest='update', help="regenerate png database", default=False, action='store_true')
     parser.add_argument("--background-color", dest='bgcolor', help="background color", type=str, default="black")
     parser.add_argument("--color-lookup", dest='lookup', help="color lookup (white, black) which currently determined background color.", type=str, default="white")
@@ -54,5 +54,5 @@ def main():
                  output_folder=args.output,
                  color_lookup=args.lookup,
                  bgcolor=args.bgcolor,
-                 threshold=args.threshold,
+                 top=args.N,
                  sample=args.sample)
