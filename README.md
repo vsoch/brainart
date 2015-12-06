@@ -14,26 +14,28 @@ What do you get when you combine open source brainmaps with art? Why, BrainArt o
 This will place an executable, 'brainart' in your system folder.
 
 
-      usage: brainart [-h] --input IMAGE [--db DB] [--threshold THRESHOLD]
+      usage: brainart [-h] --input IMAGE [--db DB] [--sample SAMPLE] [--N N]
                       [--update] [--background-color BGCOLOR]
                       [--color-lookup LOOKUP] [--output-folder OUTPUT]
 
       make images out of brain imaging data
 
       optional arguments:
-         -h, --help            show this help message and exit
-         --input IMAGE         full path to jpg image
-         --db DB               path to folder for png images for database
-         --threshold THRESHOLD
-                               threshold value to match pixels to brain images
-         --update              regenerate png database
-         --background-color BGCOLOR
-                               background color
-         --color-lookup LOOKUP
-                               color lookup (white, black, greyblack, greywhite)
-         --output-folder OUTPUT
-                               output folder for html file
-
+        -h, --help            show this help message and exit
+        --input IMAGE         full path to jpg image
+        --db DB               path to folder for png images for database
+        --sample SAMPLE       sample every SAMPLEth pixel
+        --N N                 Number of top N brains to sample from when seleting
+                              image. Larger N means more variation in brains and
+                              color.
+        --update              regenerate png database
+        --background-color BGCOLOR
+                              background color
+        --color-lookup LOOKUP
+                              color lookup (white, black) which currently determined
+                              background color.
+        --output-folder OUTPUT
+                              output folder for html file
 
 ### Generate an image
 
@@ -43,22 +45,23 @@ It will open in your browser, and tell you the location of the output file, if y
 
 
 ### Color Lookup Tables
-The default package comes with two lookup tables, each of which are somewhat limited as they are generated from matplotlib color maps. (Contributions of skin tones would be greatly appreciated!) For an example of how to generate a set of image data for the package, see [example/make_mosaic.py](example/make_mosaic.py). Currently, choice of a color lookup table just means choosing a black or white background. The way to specify this:
-
+The default package comes with two lookup tables, which are generated from a combination of matplotlib color maps (for the brains with multiple colors) and single hex values (the single colored brains for colors not well represented in matplotlib). To see how to generate a set of image data for the package, see [example/make_mosaic.py](example/make_mosaic.py). Currently, choice of a color lookup table just means choosing a black or white background, and in the future could be extended to color schemes or different brain orientations. The way to specify this:
 
      brainart --input /home/vanessa/Desktop/roman.jpg --color-lookup black
 
-Where the options are `black` `white`. I should probably make an option for black and white images, but I haven't done that yet.
+Where the options are `black` `white`.
 
 
-### Similarity Threshold
-By default, the similarity threshold is 0.9, meaning that a random image is selected from the lookup with average color of the brain above the threshold in that similarity (pearson's R). If you want to adjust that value:
+### Selection Value N
+By default, the algorithm randomly selects from the top N sorted images with color value similar to the pixel in your image. You can imagine this means there is a tradeoff - larger values of N mean more variation in both color and brain images. You can adjust this value:
+
+      brainart --input /home/vanessa/Desktop/roman.jpg --N 100
 
 
-      brainart --input /home/vanessa/Desktop/roman.jpg --threshold 0.8
+### Sampling Rate
+You can also modify the sampling rate to produce smaller images. The default is every 15 pixels, which seems to generally produce a good result. To change this:
 
-
-as in the case that the result set is empty (meaning the lookup does not have a good color match) a random image is selected, and this can reduce the quality of your result.
+      brainart --input /home/vanessa/Desktop/roman.jpg --sample 100
 
 
 ### Gallery
