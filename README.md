@@ -1,5 +1,7 @@
 # Brainart
 
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.34969.svg)](http://dx.doi.org/10.5281/zenodo.34969)
+
 [gallery](http://vsoch.github.io/brainart)
 
 What do you get when you combine open source brainmaps with art? Why, BrainArt of course! Generate a rendering (made with brains) of an image of your choice using images from the [NeuroVault](http://www.neurovault.org) database! After generation of your image, clicking on any of the tiny brains will take you to the brain statistical map. Current image lookup tables are optimized for highly colorful images, either with black or white background. You can generate your own brain images on your computer, and contribute to our gallery!
