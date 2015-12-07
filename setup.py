@@ -7,7 +7,7 @@ setup(
     name="brainart",
 
     # Version number (initial):
-    version="1.0.5",
+    version="1.0.6",
 
     # Application author details:
     author="vsoch",
@@ -30,7 +30,7 @@ setup(
     description="make images out of brain imaging data",
     keywords='brain art neuroimaging',
 
-    install_requires = ['numpy','pandas','pyneurovault','nilearn','matplotlib'],
+    install_requires = ['numpy','pandas','pyneurovault','nilearn','matplotlib','Pillow'],
 
     entry_points = {
         'console_scripts': [
