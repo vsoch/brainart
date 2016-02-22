@@ -79,7 +79,7 @@ Check out the gh-pages branch
 Add your file to the folder called "gallery" and then regenerate the static index.html like so. You will need to install my visci package to quickly generate the template:
 
 
-      cd scripts  #!important
+      cd script  #!important
       pip install visci
       python generate_gallery.py
 
