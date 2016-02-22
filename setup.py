@@ -7,7 +7,7 @@ setup(
     name="brainart",
 
     # Version number (initial):
-    version="1.0.4",
+    version="1.0.7",
 
     # Application author details:
     author="vsoch",
@@ -26,11 +26,11 @@ setup(
     # Details
     url="http://www.github.com/vsoch/brainart",
 
-    license="LICENSE.txt",
+    license="LICENSE",
     description="make images out of brain imaging data",
     keywords='brain art neuroimaging',
 
-    install_requires = ['numpy','pandas','pyneurovault','nilearn','matplotlib'],
+    install_requires = ['numpy','pandas','pyneurovault','nilearn','matplotlib','Pillow'],
 
     entry_points = {
         'console_scripts': [
