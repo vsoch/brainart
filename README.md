@@ -2,8 +2,6 @@
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.34969.svg)](http://dx.doi.org/10.5281/zenodo.34969)
 
-[gallery](http://vsoch.github.io/brainart)
-
 What do you get when you combine open source brainmaps with art? Why, BrainArt of course! Generate a rendering (made with brains) of an image of your choice using images from the [NeuroVault](http://www.neurovault.org) database! After generation of your image, clicking on any of the tiny brains will take you to the brain statistical map. Current image lookup tables are optimized for highly colorful images, either with black or white background. You can generate your own brain images on your computer, and contribute to our gallery!
 
 ![img/brainart.png](img/face_fixed.png)
@@ -65,26 +63,6 @@ You can also modify the sampling rate to produce smaller images. The default is 
 
       brainart --input /home/vanessa/Desktop/roman.jpg --sample 100
 
-
-### Gallery
-The [gallery](http://vsoch.github.io/brainart) is the index file hosted on the github pages for this repo. To submit a file to it, you can clone this repo:
-
-      git clone https://www.github.com/vsoch/brainart
-
-Check out the gh-pages branch
-
-      git checkout -b gh-pages
-      git pull origin gh-pages
-
-Add your file to the folder called "gallery" and then regenerate the static index.html like so. You will need to install my visci package to quickly generate the template:
-
-
-      cd script  #!important
-      pip install visci
-      python generate_gallery.py
-
-
-This will update the `index.html` in the main folder, which renders on github pages. Now just submit the PR, and you're done! You can also email directly to me, if you are not comfortable with github. Submissions are greatly appreciated, and fun :)
 
 
 ### Under Development
