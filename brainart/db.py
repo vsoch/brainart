@@ -18,7 +18,7 @@ def get_lookup(lookup_name):
     lookups = glob("%s/data/*.pkl" %base)
     lookup_names = [os.path.basename(x).split(".")[0].split("_")[0] for x in lookups]
     if lookup_name not in lookup_names:
-        print "Invalid lookup name, choices are %s." %(",".join(lookup_names))
+        print("Invalid lookup name, choices are %s." %(",".join(lookup_names)))
     else:
         return pandas.read_pickle("%s/data/%s_lookup.pkl" %(base,lookup_name))
 

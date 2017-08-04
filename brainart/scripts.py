@@ -40,14 +40,14 @@ def main():
         if args.db is not None:
             get_data(args.folder)
         else:
-            print "Please specify location for png images for database with --db argument"
+            print("Please specify location for png images for database with --db argument")
     else:        
         if args.image == None:
-            print "Please specify input jpg image with --input argument."
+            print("Please specify input jpg image with --input argument.")
 
         # Check background color
         if args.lookup not in ["black","white"]:
-            print "Unrecognized lookup table! Setting to white."
+            print("Unrecognized lookup table! Setting to white.")
             args.lookup = "white"
             
         generate(template=args.image,

@@ -28,12 +28,12 @@ def generate(template,output_folder=None,color_lookup="white",image_base_path=No
         output_folder = tempfile.mkdtemp()
 
     if isinstance(color_lookup,pandas.DataFrame):
-        print "Custom color lookup found!"
+        print("Custom color lookup found!")
         if image_base_path == None:
-            print "Error: color lookup is set to custom file but image_base_path is set to 'None.' If you want to use images for a custom table you have created, you need to provide a base path to those images."
+            print("Error: color lookup is set to custom file but image_base_path is set to 'None.' If you want to use images for a custom table you have created, you need to provide a base path to those images.")
             sys.exit()
     elif color_lookup not in ["white","black"]:
-        print "Error: package color lookup tables include 'white','black','greywhite' and 'greyblack'"
+        print("Error: package color lookup tables include 'white','black','greywhite' and 'greyblack'")
         sys.exit()
     else:
         # Background color of html page should be black in all cases except for white lookup
@@ -42,7 +42,7 @@ def generate(template,output_folder=None,color_lookup="white",image_base_path=No
         color_lookup = pandas.read_pickle("%s/data/%s_lookup.pkl" %(base,color_lookup))
         image_base_path = "https://rawgithub.com/vsoch/brainart/master/png"
 
-    print "Generating image... this can take a few minutes."
+    print("Generating image... this can take a few minutes.")
     new_image = generate_matching_df(template,color_lookup,top=top,sample=sample)
 
     # Make paths relative to image_base_path
@@ -59,6 +59,6 @@ def generate(template,output_folder=None,color_lookup="white",image_base_path=No
     output_html = "%s/index.html" %output_folder
     save_template(output_html,html_template)
         
-    print "Result files being saved to %s" %output_folder
+    print("Result files being saved to %s" %output_folder)
     webbrowser.open_new_tab(output_html)
 
